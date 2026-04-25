@@ -332,6 +332,7 @@ svg { display: block; }
 }
 .badge-teal   { background: rgba(69,194,177,0.12);  color: #1BA39C; }
 .badge-orange { background: rgba(242,151,41,0.14);  color: #c97a10; }
+.badge-blue   { background: rgba(1,130,252,0.10);   color: #0160c2; }
 .badge-grey   { background: var(--bg); color: var(--text-2); border: 1px solid var(--border); }
 .badge-green  { background: rgba(39,174,96,0.12);   color: #1a7a42; }
 
