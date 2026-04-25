@@ -1,0 +1,3 @@
+module.exports=[13777,a=>{a.v({className:"raleway_ecde9c1a-module__nC3btq__className",variable:"raleway_ecde9c1a-module__nC3btq__variable"})},27572,a=>{"use strict";var b=a.i(7997),c=a.i(13777);let d={className:c.default.className,style:{fontFamily:"'Raleway', 'Raleway Fallback'",fontStyle:"normal"}};null!=c.default.variable&&(d.variable=c.default.variable),a.s(["default",0,function({children:a}){return(0,b.jsx)("html",{lang:"en",className:`${d.variable} h-full antialiased`,children:(0,b.jsx)("body",{className:"min-h-full",children:a})})},"metadata",0,{title:"Waypoint — Patient Portal",description:"Waypoint digital health platform"}],27572)},50645,a=>{a.n(a.i(27572))}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__0mu1hiy._.js.map
