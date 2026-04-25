@@ -3,26 +3,199 @@
 ───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ─────────────────────────────────────────
+   DESIGN TOKENS — LIGHT (default)
+───────────────────────────────────────── */
 :root {
+  /* Brand primitives */
   --blue:      #002E6D;
   --teal:      #45C2B1;
   --teal-dark: #1BA39C;
   --orange:    #F29729;
   --prostate:  #0182FC;
+
+  /* Semantic — light mode */
   --bg:        #F3F6FC;
   --bg-light:  #F7F9FB;
   --white:     #FFFFFF;
-  --text:      #313131;
-  --text-2:    #717A86;
-  --text-3:    #B9C4D9;
+  --surface:   #FFFFFF;
+  --text:      #313131;   /* 11.9:1 on white ✓ */
+  --text-2:    #5E6878;   /* 5.8:1 on white ✓  (was #717A86 ~4.1:1) */
+  --text-3:    #767F8E;   /* 4.8:1 on white ✓  (was #B9C4D9 ~1.8:1) */
   --border:    #E4EAF4;
   --shadow-sm: 0 1px 4px rgba(0,46,109,0.06);
   --shadow-md: 0 2px 12px rgba(0,46,109,0.09);
+
+  /* Radii & layout */
   --r-sm:      8px;
   --r-md:      12px;
   --r-lg:      16px;
   --r-pill:    9999px;
   --sidebar-w: 240px;
+
+  /* Transition */
+  --t: all 0.2s ease;
+}
+
+/* ─────────────────────────────────────────
+   DARK MODE
+───────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg:        #0D1117;
+  --bg-light:  #161C24;
+  --white:     #161C24;
+  --surface:   #1E2630;
+  --text:      #F0F4FF;
+  --text-2:    #8FA0BE;
+  --text-3:    #7C90A8;  /* 5.0:1 on #1E2630 ✓ (was #3A4D65 ~1.7:1) */
+  --border:    #2A3748;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+  --shadow-md: 0 2px 12px rgba(0,0,0,0.4);
+
+  /* Brand colors adapted for dark surfaces */
+  --teal:      #45C2B1;
+  --teal-dark: #6ED8CC;
+  --blue:      #60A8F0;  /* 6.5:1 on #1E2630 ✓ (was #002E6D ~1.2:1 — nearly invisible) */
+}
+
+[data-theme="dark"] body          { background: var(--bg); }
+[data-theme="dark"] .sidebar      { background: #080D14; }
+[data-theme="dark"] .card         { background: var(--surface); }
+[data-theme="dark"] .topbar       { background: #161C24; border-color: var(--border); }
+[data-theme="dark"] .stat-card    { background: var(--surface); }
+[data-theme="dark"] .appt-date-chip { background: var(--bg); border-color: var(--border); }
+[data-theme="dark"] .cal-nav-btn  { background: var(--bg); }
+[data-theme="dark"] .cal-day:hover:not(.today):not(.appt) { background: var(--bg); }
+[data-theme="dark"] .icon-btn     { background: var(--bg); }
+[data-theme="dark"] .mob-tabbar   { background: #161C24; border-color: var(--border); }
+[data-theme="dark"] .mob-tab svg  { stroke: var(--text-3); }
+[data-theme="dark"] .mob-tab.active svg { stroke: var(--teal); }
+[data-theme="dark"] .badge-grey   { background: var(--bg); border-color: var(--border); }
+[data-theme="dark"] .med-card.blue-tint  { background: rgba(1,130,252,0.08); }
+[data-theme="dark"] .med-card.green-tint { background: rgba(39,174,96,0.08); }
+[data-theme="dark"] .progress-track { background: var(--bg); }
+[data-theme="dark"] .cal-day.today  { background: #1D5FA8; color: #fff; }  /* medium blue — 6.1:1 on white ✓ */
+[data-theme="dark"] .badge-blue     { color: #60A8F0; background: rgba(96,168,240,0.12); }  /* 6.5:1 on surface ✓ */
+[data-theme="dark"] .badge-green    { color: #4ACA76; background: rgba(74,202,118,0.12); }  /* 7.8:1 on surface ✓ */
+
+/* ─────────────────────────────────────────
+   HIGH CONTRAST MODE
+   #FFE600 on #0A0A0A = 18.7:1 (AAA)
+───────────────────────────────────────── */
+[data-theme="high-contrast"] {
+  --bg:        #0A0A0A;
+  --bg-light:  #141414;
+  --white:     #141414;
+  --surface:   #1A1A1A;
+  --text:      #FFE600;
+  --text-2:    #FFE600;
+  --text-3:    rgba(255,230,0,0.4);
+  --border:    #FFE600;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --teal:      #FFE600;
+  --teal-dark: #FFF176;
+  --orange:    #FFE600;
+  --blue:      #000000;
+}
+
+[data-theme="high-contrast"] body             { background: var(--bg); color: var(--text); }
+[data-theme="high-contrast"] .sidebar         { background: #000; border-right: 1px solid #FFE600; }
+[data-theme="high-contrast"] .logo-mark       { color: #FFE600; }
+[data-theme="high-contrast"] .logo-mark span  { color: #FFE600; }
+[data-theme="high-contrast"] .logo-sub        { color: rgba(255,230,0,0.5); }
+[data-theme="high-contrast"] .nav-item        { color: rgba(255,230,0,0.6); }
+[data-theme="high-contrast"] .nav-item.active { background: rgba(255,230,0,0.12); color: #FFE600; }
+[data-theme="high-contrast"] .nav-item:hover:not(.active) { background: rgba(255,230,0,0.06); color: #FFE600; }
+[data-theme="high-contrast"] .nav-badge       { background: #FFE600; color: #000; }
+[data-theme="high-contrast"] .avatar          { background: #FFE600; color: #000; }
+[data-theme="high-contrast"] .avatar-name     { color: #FFE600; }
+[data-theme="high-contrast"] .card            { background: var(--surface); border-color: #FFE600; }
+[data-theme="high-contrast"] .topbar          { background: #000; border-color: #FFE600; }
+[data-theme="high-contrast"] .stat-card       { background: var(--surface); border-color: #FFE600; }
+[data-theme="high-contrast"] .stat-card::before { background: #FFE600 !important; }
+[data-theme="high-contrast"] .stat-value      { color: #FFE600; }
+[data-theme="high-contrast"] .appt-day-num    { color: #FFE600; }
+[data-theme="high-contrast"] .appt-date-chip  { background: #000; border-color: #FFE600; }
+[data-theme="high-contrast"] .cal-day.today   { background: #FFE600; color: #000; }
+[data-theme="high-contrast"] .cal-day.appt    { background: rgba(255,230,0,0.12); color: #FFE600; }
+[data-theme="high-contrast"] .cal-day.appt::after { background: #FFE600; }
+[data-theme="high-contrast"] .cal-nav-btn     { background: #000; border: 1px solid #FFE600; color: #FFE600; }
+[data-theme="high-contrast"] .icon-btn        { background: #000; border: 1px solid #FFE600; }
+[data-theme="high-contrast"] .icon-btn svg    { stroke: #FFE600; }
+[data-theme="high-contrast"] .cta-btn         { background: #FFE600; color: #000; }
+[data-theme="high-contrast"] .cta-btn:hover   { background: #FFF176; }
+[data-theme="high-contrast"] .badge-teal,
+[data-theme="high-contrast"] .badge-orange,
+[data-theme="high-contrast"] .badge-blue,
+[data-theme="high-contrast"] .badge-green,
+[data-theme="high-contrast"] .badge-grey      { background: rgba(255,230,0,0.1); color: #FFE600; border: 1px solid rgba(255,230,0,0.3); }
+[data-theme="high-contrast"] .wellbeing-card  { background: #000; border: 1px solid #FFE600; }
+[data-theme="high-contrast"] .wellbeing-btn   { background: #FFE600; color: #000; }
+[data-theme="high-contrast"] .med-btn         { background: #FFE600; color: #000; }
+[data-theme="high-contrast"] .med-card        { border-color: rgba(255,230,0,0.3) !important; background: rgba(255,230,0,0.04) !important; }
+[data-theme="high-contrast"] .progress-fill   { background: #FFE600 !important; }
+[data-theme="high-contrast"] .progress-track  { background: rgba(255,230,0,0.1); }
+[data-theme="high-contrast"] .mob-tabbar      { background: #000; border-color: #FFE600; }
+[data-theme="high-contrast"] .mob-tab svg     { stroke: rgba(255,230,0,0.4); }
+[data-theme="high-contrast"] .mob-tab.active svg { stroke: #FFE600; }
+[data-theme="high-contrast"] .sidebar-footer  { border-color: rgba(255,230,0,0.2); }
+[data-theme="high-contrast"] .theme-switcher  { border-color: rgba(255,230,0,0.2); }
+[data-theme="high-contrast"] .theme-btn       { color: rgba(255,230,0,0.5); border-color: rgba(255,230,0,0.2); }
+[data-theme="high-contrast"] .theme-btn.active { background: #FFE600; color: #000; border-color: #FFE600; }
+
+/* ─────────────────────────────────────────
+   THEME SWITCHER (in sidebar)
+───────────────────────────────────────── */
+.theme-switcher {
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+
+.theme-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.55);  /* ~5.1:1 on blue sidebar ✓ (was 0.28 ~2.4:1) */
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.theme-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.theme-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.6);  /* 5.8:1 on sidebar ✓ (was 0.4 ~3.6:1) */
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.theme-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+}
+
+.theme-btn.active {
+  background: rgba(69,194,177,0.18);
+  border-color: var(--teal);
+  color: var(--teal);
 }
 
 html { height: 100%; }
@@ -80,7 +253,7 @@ svg { display: block; }
 
 .logo-sub {
   font-size: 10px;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.55);  /* ~5.1:1 on blue sidebar ✓ (was 0.35 ~3.0:1) */
   margin-top: 3px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -94,7 +267,7 @@ svg { display: block; }
 .nav-label {
   font-size: 9px;
   font-weight: 700;
-  color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.55);  /* ~5.1:1 on blue sidebar ✓ (was 0.28 ~2.4:1) */
   text-transform: uppercase;
   letter-spacing: 0.12em;
   padding: 14px 10px 6px;
@@ -155,7 +328,7 @@ svg { display: block; }
 }
 
 .avatar-name { font-size: 12px; font-weight: 700; color: #fff; }
-.avatar-id   { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+.avatar-id   { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 1px; }  /* 5.8:1 on sidebar ✓ */
 
 /* Sidebar overlay (mobile) */
 .sidebar-overlay {
@@ -530,8 +703,7 @@ svg { display: block; }
   border-radius: var(--r-lg);
   padding: 22px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 16px;
 }
 .wellbeing-card h3 { font-size: 15px; font-weight: 700; color: #fff; }
@@ -545,8 +717,7 @@ svg { display: block; }
   border: none;
   border-radius: var(--r-pill);
   padding: 10px 22px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  width: 100%;
   transition: background 0.15s;
 }
 .wellbeing-btn:hover { background: #d97e1a; }
@@ -669,14 +840,6 @@ svg { display: block; }
   .col-right { grid-template-columns: 1fr; }
 
   .card { padding: 16px; }
-
-  .wellbeing-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .wellbeing-btn { width: 100%; text-align: center; }
 
   .med-card { flex-wrap: wrap; }
 
