@@ -22,8 +22,7 @@
   <aside class="sidebar" id="sidebar">
 
     <div class="sidebar-logo">
-      <div class="logo-mark">Way<span>point</span></div>
-      <div class="logo-sub">Patient portal</div>
+      <img src="images/logo.svg" alt="Waypoint" class="logo-img">
     </div>
 
     <nav class="sidebar-nav">
@@ -180,7 +179,21 @@
       <!-- ─── Three-column grid ─── -->
       <div class="content-grid">
 
-        <!-- Col 1: Calendar -->
+        <!-- Col 1: Doctor card + Calendar -->
+        <div class="col-left">
+
+          <!-- Care Team -->
+          <div class="card doctor-card">
+            <img src="images/dr-ahmed.png" alt="Dr Ahmed" class="doctor-img">
+            <div class="doctor-info">
+              <div>
+                <p class="doctor-name">Dr Ahmed</p>
+                <p class="doctor-role">Consultant Oncologist</p>
+              </div>
+              <button class="med-btn">Send a message</button>
+            </div>
+          </div>
+
         <div class="card">
             <div class="cal-header">
               <div class="cal-month">May 2026</div>
@@ -217,6 +230,8 @@
               <div class="cal-legend-item"><div class="dot dot-blue"></div> Today</div>
             </div>
           </div>
+
+        </div><!-- /col-left -->
 
         <!-- Col 2: Appointments -->
         <div class="card">
