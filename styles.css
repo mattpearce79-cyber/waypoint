@@ -336,16 +336,16 @@ svg { display: block; }
 .badge-green  { background: rgba(39,174,96,0.12);   color: #1a7a42; }
 
 /* ─────────────────────────────────────────
-   TWO-COLUMN LAYOUT
+   THREE-COLUMN CONTENT GRID
 ───────────────────────────────────────── */
-.two-col {
+.content-grid {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 260px 1fr 300px;
   gap: 20px;
   align-items: start;
 }
 
-.col { display: flex; flex-direction: column; gap: 20px; }
+.col-right { display: flex; flex-direction: column; gap: 20px; }
 
 /* ─────────────────────────────────────────
    CALENDAR
@@ -580,14 +580,16 @@ svg { display: block; }
 
 /* ─────────────────────────────────────────
    RESPONSIVE — TABLET  (< 1100px)
+   Calendar + appointments side by side,
+   right column spans full width below.
 ───────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .two-col {
-    grid-template-columns: 1fr;
+  .content-grid {
+    grid-template-columns: 260px 1fr;
   }
 
-  /* Right column items go below left column */
-  .col.right {
+  .col-right {
+    grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -603,8 +605,13 @@ svg { display: block; }
     grid-template-columns: 1fr 1fr;
   }
 
-  .col.right {
+  .content-grid {
     grid-template-columns: 1fr;
+  }
+
+  .col-right {
+    grid-column: 1;
+    grid-template-columns: 1fr 1fr;
   }
 
   .progress-track { width: 120px; }
@@ -656,7 +663,9 @@ svg { display: block; }
 
   .stat-value { font-size: 24px; }
 
-  .two-col { gap: 14px; }
+  .content-grid { gap: 14px; }
+
+  .col-right { grid-template-columns: 1fr; }
 
   .card { padding: 16px; }
 
