@@ -702,6 +702,10 @@ svg { display: block; }
   overflow: hidden;
 }
 
+.mobile-doctor-card {
+  display: none;
+}
+
 .doctor-img {
   width: 100%;
   height: 190px;
@@ -882,6 +886,16 @@ svg { display: block; }
 
   /* Show bottom nav */
   .mob-tabbar { display: flex; }
+
+  /* Doctor card at top on mobile */
+  .mobile-doctor-card {
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .col-left .doctor-card {
+    display: none;
+  }
 }
 
 @media (max-width: 400px) {
